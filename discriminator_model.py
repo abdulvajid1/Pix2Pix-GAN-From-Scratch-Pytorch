@@ -44,8 +44,7 @@ class Discriminator(nn.Module):
     def forward(self, x, target):
         x = torch.cat([x, target], dim=1) # target will be new channel in x
         x = self.initial(x)
-        result = self.model(x)
-        print(result.size())
+        return self.model(x)
     
     
 def test():

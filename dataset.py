@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 import os
 from torch.utils.data import Dataset
+import config
 
 class MapDataset(Dataset):
     def __init__(self, root_dir:str = 'dataset/'):
@@ -20,3 +21,9 @@ class MapDataset(Dataset):
         
         input_img = image[:, :600, :] # split the image input and target to image (1200, height) -> (600, h) , (600, h)
         target_img = image[:, 600:, :]
+        
+        augmentation = config.both_transform(image=input_img, image0=target_img)
+        input_img, target_img = augmentation['image'], augmentation['image0']
+        
+        input_img = config.tranform_input(image=input_img)['image']
+        target_img = config.tranform_target(image=target_img)['image']
