@@ -11,7 +11,7 @@ class CNNBlock(nn.Module):
         
         self.block = nn.Sequential(
             nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding_mode='reflect'),
-            nn.BatchNorm2d(out_channels),
+            nn.InstanceNorm2d(out_channels),
             nn.LeakyReLU()
         )
     
