@@ -2,9 +2,14 @@
 __pycache__/
 *.py[codz]
 *$py.class
-
+runs/
 # C extensions
 *.so
+
+*.ckpt
+
+dataset/
+*.png
 
 # Distribution / packaging
 .Python
